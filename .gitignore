@@ -6,14 +6,21 @@
 !README.md
 
 # Ignore all files named xxx or ending with .cs
-**.cs
-
+!**.cs
+**.csproj
 # Whitelist folder/a/b1/ and folder/a/b2/
 # trailing "/" is optional for folders, may match file though.
 # "/" is NOT optional when followed by a *
 !src/
 src/*
+!src/GradeBook/
+src/GradeBook/bin
+src/GradeBook/obj
 !test/
 test/*
+test/GradeBook.Tests/bin
+test/GradeBook.Tests/obj
+!test/GradeBook.Tests/
+
 
 # Adding to the above, this also works...
