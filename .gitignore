@@ -1,0 +1,19 @@
+# Blacklist files/folders in same directory as the .gitignore file
+/*
+
+# Whitelist some files
+!.gitignore
+!README.md
+
+# Ignore all files named xxx or ending with .cs
+**.cs
+
+# Whitelist folder/a/b1/ and folder/a/b2/
+# trailing "/" is optional for folders, may match file though.
+# "/" is NOT optional when followed by a *
+!src/
+src/*
+!test/
+test/*
+
+# Adding to the above, this also works...
