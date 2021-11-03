@@ -6,7 +6,60 @@ namespace GradeBook.Tests
     public class TypeTests
     {
         [Fact]
-        public void Test4()
+
+        public void ValueTest()
+        {
+            var x = GetInt();
+            SetInt(ref x);
+
+            Assert.Equal(42,x);
+        }
+
+        private void SetInt(ref int x)
+        {
+            x=42;
+        }
+
+        private int GetInt()
+        {
+            return 3;
+        }
+
+        [Fact]
+        public void StringLikeValue()
+        {
+            string name = "Kuba";
+            var upper = MakeUpparcase(name);
+
+            //assert
+            Assert.Equal("Kuba", name);    
+            Assert.Equal("KUBA", upper);    
+        }
+
+        private string MakeUpparcase(string parameter)
+        {
+            return parameter.ToUpper();
+        }
+
+        [Fact]
+        public void PassByReference()
+        {
+            //arrange
+            var book1 = GetBook("Book 1");
+            GetBookSetName(ref book1, "New Name");
+            //act        
+            
+            //assert
+            Assert.Equal("New Name",book1.Name);
+        }
+
+        private void GetBookSetName(ref Book book, string name)
+        {
+            book = new Book(name);
+        }
+
+        [Fact]
+        public void PassByValue()
         {
             //arrange
             var book1 = GetBook("Book 1");
