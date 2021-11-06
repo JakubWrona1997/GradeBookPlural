@@ -7,9 +7,22 @@ namespace GradeBook
     {
         static void Main(string[] args)
         {
-            var book = new Book("Jakob");
-            book.AddGrade(56.1);
-            book.AddGrade(31.5);
+            var book = new Book("Jakob");             
+            var flag = false;
+            while (!flag)
+            {   
+                Console.WriteLine("Please provide a grade, if you want to exit press q");
+                var input = Console.ReadLine();
+                if(input =="q")
+                {
+                    flag = true;
+                    continue;
+                }
+                var grade = double.Parse(input);
+                book.AddGrade(grade);
+            }
+            
+            
             
             var stats = book.GetStatistics();
             
