@@ -18,12 +18,24 @@ namespace GradeBook
                     flag = true;
                     continue;
                 }
+                try
+                {
                 var grade = double.Parse(input);
                 book.AddGrade(grade);
-            }
-            
-            
-            
+                }
+                catch(ArgumentException ex)
+                {
+                    Console.WriteLine(ex.Message);                    
+                }
+                catch(FormatException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                finally
+                {
+                    Console.WriteLine("**");
+                }
+            }                             
             var stats = book.GetStatistics();
             
             Console.WriteLine($"Lowest grade is {stats.Low}, Highest is {stats.High},Average:{stats.Average}, Letter:{stats.Letter}");     

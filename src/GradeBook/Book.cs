@@ -5,11 +5,13 @@ namespace GradeBook
 { 
  public class Book
     {
+        
         public Book(string name)
         {
             grades = new List<double>();
             Name = name;
         }
+        
         public void AddLetterGrade(char letter)
         {
             switch(letter)
@@ -35,7 +37,7 @@ namespace GradeBook
                     break;
             }
         }
-
+        
         public void AddGrade(double grade)
         {
             if(grade <= 100 && grade >=0)
@@ -44,7 +46,7 @@ namespace GradeBook
             }
             else
             {
-                Console.WriteLine("Invalid value!");
+                throw new ArgumentException($"Invalid {nameof(grade)}");
             }
         }
 
@@ -88,9 +90,8 @@ namespace GradeBook
             }
 
             return result;            
-        }
-
-
+        }        
+        
         private List<double> grades;
         public string Name;
     }
