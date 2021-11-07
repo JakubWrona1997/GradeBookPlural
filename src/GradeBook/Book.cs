@@ -12,7 +12,7 @@ namespace GradeBook
             Name = name;
         }
         
-        public void AddLetterGrade(char letter)
+        public void AddGrade(char letter)
         {
             switch(letter)
             {
@@ -91,8 +91,12 @@ namespace GradeBook
 
             return result;            
         }        
-        
         private List<double> grades;
-        public string Name;
+        
+        public string Name
+        {
+            get;
+            set;
+        }    
     }
 }
