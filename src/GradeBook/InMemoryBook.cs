@@ -56,13 +56,8 @@ public class InMemoryBook : Book
             }
         }
 
-        public event GradeAddedDelegate GradeAdded;
-        public void AddGrade()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Statistics GetStatistics()
+        public override event GradeAddedDelegate GradeAdded;
+        public override Statistics GetStatistics()
         {
             var result = new Statistics();
             result.Average = 0.0;        

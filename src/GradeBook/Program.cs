@@ -14,7 +14,7 @@ namespace GradeBook
 
             Console.WriteLine($"For the Book named {book.Name}:\n Lowest grade is {stats.Low}, Highest is {stats.High},Average:{stats.Average}, Letter:{stats.Letter}");
 
-            static void EnterGrades(Book book)
+            static void EnterGrades(IBook book)
             {
                 var flag = false;
                 while (!flag)
