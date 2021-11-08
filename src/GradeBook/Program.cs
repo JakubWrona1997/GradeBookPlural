@@ -7,40 +7,44 @@ namespace GradeBook
     {
         static void Main(string[] args)
         {
-            var book = new Book("Jakob");
+            var book = new InMemoryBook("Jakob");
             book.GradeAdded += OnGradeAdded;
-
-            var flag = false;
-            while (!flag)
-            {   
-                Console.WriteLine("Please provide a grade, if you want to exit press q");
-                var input = Console.ReadLine();
-                if(input =="q")
-                {
-                    flag = true;
-                    continue;
-                }
-                try
-                {
-                var grade = double.Parse(input);
-                book.AddGrade(grade);
-                }
-                catch(ArgumentException ex)
-                {
-                    Console.WriteLine(ex.Message);                    
-                }
-                catch(FormatException ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-                finally
-                {
-                    Console.WriteLine("**");
-                }
-            }                             
+            EnterGrades(book);
             var stats = book.GetStatistics();
-            
-            Console.WriteLine($"For the Book named {book.Name}:\n Lowest grade is {stats.Low}, Highest is {stats.High},Average:{stats.Average}, Letter:{stats.Letter}");     
+
+            Console.WriteLine($"For the Book named {book.Name}:\n Lowest grade is {stats.Low}, Highest is {stats.High},Average:{stats.Average}, Letter:{stats.Letter}");
+
+            static void EnterGrades(Book book)
+            {
+                var flag = false;
+                while (!flag)
+                {
+                    Console.WriteLine("Please provide a grade, if you want to exit press q");
+                    var input = Console.ReadLine();
+                    if (input == "q")
+                    {
+                        flag = true;
+                        continue;
+                    }
+                    try
+                    {
+                        var grade = double.Parse(input);
+                        book.AddGrade(grade);
+                    }
+                    catch (ArgumentException ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                    catch (FormatException ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                    finally
+                    {
+                        Console.WriteLine("**");
+                    }
+                }
+            }
             // foreach (var item in grades)
             // {
             //     Console.WriteLine(item);
@@ -54,7 +58,7 @@ namespace GradeBook
             // {
             //     Console.WriteLine("Hello!");
             // }
-           
+
         }
         static void OnGradeAdded(object sender, EventArgs e)
         {
