@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 
+namespace GradeBook
+{
 public class NamedObject
 {
     public NamedObject(string name)
@@ -12,4 +14,6 @@ public class NamedObject
     {
         get; set;
     }
+}
+
 }
